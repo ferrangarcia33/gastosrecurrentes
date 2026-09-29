@@ -1931,7 +1931,7 @@ body.light .tag { background: var(--surface2); }
     <div class="field"><label for="f-card">Forma de pago</label><select id="f-card"></select></div>
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
-      <button class="btn-save" onclick="saveItem()">Guardar</button>
+      <button class="btn-save" id="btn-save-item" onclick="saveItem()">Guardar</button>
     </div>
   </div>
 </div>
@@ -2981,6 +2981,9 @@ function populateCardSelect(sel) {
 
 function openModal(id) {
   editingId = id !== undefined ? id : null;
+  _savingItem = false;
+  const saveBtn = document.getElementById('btn-save-item');
+  if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = 'Guardar'; }
   if (id !== undefined) {
     const item = data.find(d => d.id === id);
     if (!item) return;
@@ -3040,7 +3043,9 @@ function closeAdvanceDateConfirm() {
   _advanceDateNext = '';
 }
 
+let _savingItem = false;
 async function saveItem() {
+  if (_savingItem) return;
   const name = document.getElementById('f-name').value.trim();
   if (!name) { document.getElementById('f-name').focus(); return; }
   const item = {
@@ -3053,7 +3058,13 @@ async function saveItem() {
     card:   document.getElementById('f-card').value,
   };
   data = editingId !== null ? data.map(d => d.id === editingId ? item : d) : [...data, item];
-  closeModal(); await persist(); render();
+  const saveBtn = document.getElementById('btn-save-item');
+  if (saveBtn) { saveBtn.disabled = true; saveBtn.textContent = 'Guardando...'; }
+  _savingItem = true;
+  await persist();
+  _savingItem = false;
+  if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = 'Guardar'; }
+  closeModal(); render();
 }
 function editItem(id) { openModal(id); }
 
