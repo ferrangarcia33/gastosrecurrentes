@@ -320,6 +320,7 @@ body {
 }
 .inv-row:hover .inv-row-plus-btn { opacity: 1; }
 .inv-row-plus-btn:hover { color: var(--green); background: var(--green-soft); }
+.inv-row-plus-btn:focus-visible { opacity: 1; }
 
 .inv-row-del-btn {
   background: none; border: none; cursor: pointer;
@@ -1709,13 +1710,13 @@ body.light .tag { background: var(--surface2); }
         <label class="auth-label" for="login-pass">Contraseña</label>
         <div class="auth-pass-wrap">
           <input class="auth-input" type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password">
-          <button type="button" class="auth-eye" onclick="toggleEye('login-pass',this)" tabindex="-1">
+          <button type="button" class="auth-eye" onclick="toggleEye('login-pass',this)" tabindex="-1" aria-label="Mostrar u ocultar contraseña">
             <svg id="eye-login-open" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             <svg id="eye-login-closed" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
           </button>
         </div>
       </div>
-      <div class="auth-error" id="login-error"></div>
+      <div class="auth-error" id="login-error" role="alert"></div>
       <button class="auth-btn" id="login-btn" onclick="doLogin()">Entrar</button>
     </div>
 
@@ -1729,14 +1730,14 @@ body.light .tag { background: var(--surface2); }
         <label class="auth-label" for="reg-pass">Contraseña</label>
         <div class="auth-pass-wrap">
           <input class="auth-input" type="password" id="reg-pass" placeholder="Mínimo 6 caracteres" autocomplete="new-password">
-          <button type="button" class="auth-eye" onclick="toggleEye('reg-pass',this)" tabindex="-1">
+          <button type="button" class="auth-eye" onclick="toggleEye('reg-pass',this)" tabindex="-1" aria-label="Mostrar u ocultar contraseña">
             <svg id="eye-reg-open" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             <svg id="eye-reg-closed" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
           </button>
         </div>
       </div>
-      <div class="auth-error" id="reg-error"></div>
-      <div class="auth-success" id="reg-success"></div>
+      <div class="auth-error" id="reg-error" role="alert"></div>
+      <div class="auth-success" id="reg-success" role="status"></div>
       <button class="auth-btn" id="reg-btn" onclick="doRegister()">Crear cuenta</button>
     </div>
 
@@ -1800,7 +1801,7 @@ body.light .tag { background: var(--surface2); }
     <button class="filter-pill active" data-fval="all" onclick="setFilter(this)">Todos</button>
     <div id="cat-filter-pills"></div>
     <div class="toolbar-spacer"></div>
-    <select class="sort-select" onchange="setSort(this.value)">
+    <select class="sort-select" onchange="setSort(this.value)" aria-label="Ordenar gastos">
       <option value="default">Orden: por defecto</option>
       <option value="price-desc">Más caro primero</option>
       <option value="price-asc">Más barato primero</option>
@@ -1822,9 +1823,9 @@ body.light .tag { background: var(--surface2); }
 
     <!-- Year navigation -->
     <div class="inv-year-bar">
-      <button class="inv-year-btn" onclick="changeInvYear(-1)">&#8249;</button>
+      <button class="inv-year-btn" onclick="changeInvYear(-1)" aria-label="Año anterior">&#8249;</button>
       <span class="inv-year-label" id="inv-year-label"></span>
-      <button class="inv-year-btn" onclick="changeInvYear(+1)">&#8250;</button>
+      <button class="inv-year-btn" onclick="changeInvYear(+1)" aria-label="Año siguiente">&#8250;</button>
     </div>
 
     <div id="inv-islands"></div>
@@ -1835,9 +1836,9 @@ body.light .tag { background: var(--surface2); }
 
     <!-- Year navigation -->
     <div class="inv-year-bar">
-      <button class="inv-year-btn" onclick="changeInvYear(-1)">&#8249;</button>
+      <button class="inv-year-btn" onclick="changeInvYear(-1)" aria-label="Año anterior">&#8249;</button>
       <span class="inv-year-label" id="inv-year-label-inv"></span>
-      <button class="inv-year-btn" onclick="changeInvYear(+1)">&#8250;</button>
+      <button class="inv-year-btn" onclick="changeInvYear(+1)" aria-label="Año siguiente">&#8250;</button>
     </div>
 
     <div id="inv-only-island"></div>
@@ -1888,12 +1889,12 @@ body.light .tag { background: var(--surface2); }
   </div>
 </div>
 
-<div class="save-toast" id="toast">✓ guardado</div>
+<div class="save-toast" id="toast" role="status" aria-live="polite">✓ guardado</div>
 
 <!-- Calculadora de presupuesto -->
-<div id="budget-modal" role="dialog" aria-modal="true" onclick="if(event.target===this)closeBudgetModal()">
+<div id="budget-modal" role="dialog" aria-modal="true" aria-labelledby="budget-modal-title" onclick="if(event.target===this)closeBudgetModal()">
   <div class="calc-box">
-    <div class="calc-title">Calculadora de presupuesto</div>
+    <div class="calc-title" id="budget-modal-title">Calculadora de presupuesto</div>
     <div class="calc-subtitle">Edita nombres y porcentajes. Pulsa × para eliminar.</div>
     <div class="calc-input-wrap">
       <label for="budget-salary">Sueldo (€)</label>
@@ -2000,7 +2001,7 @@ body.light .tag { background: var(--surface2); }
 </div>
 
 <!-- Confirm copy from previous year -->
-<div class="confirm-overlay" id="copy-prev-confirm" role="dialog" aria-modal="true" onclick="if(event.target===this)closeCopyConfirm()">
+<div class="confirm-overlay" id="copy-prev-confirm" role="dialog" aria-modal="true" aria-labelledby="copy-prev-heading" onclick="if(event.target===this)closeCopyConfirm()">
   <div class="confirm-box">
     <h3 id="copy-prev-heading"></h3>
     <p id="copy-prev-desc"></p>
@@ -2012,9 +2013,9 @@ body.light .tag { background: var(--surface2); }
 </div>
 
 <!-- Confirm eliminar categoría presupuesto -->
-<div class="confirm-overlay" id="budget-del-confirm" role="dialog" aria-modal="true" onclick="if(event.target===this)closeBudgetDelConfirm()">
+<div class="confirm-overlay" id="budget-del-confirm" role="dialog" aria-modal="true" aria-labelledby="budget-del-heading" onclick="if(event.target===this)closeBudgetDelConfirm()">
   <div class="confirm-box">
-    <h3>¿Eliminar categoría?</h3>
+    <h3 id="budget-del-heading">¿Eliminar categoría?</h3>
     <p id="budget-del-desc"></p>
     <div class="confirm-actions">
       <button class="btn-cancel" onclick="closeBudgetDelConfirm()">Cancelar</button>
@@ -2024,9 +2025,9 @@ body.light .tag { background: var(--surface2); }
 </div>
 
 <!-- Confirm avanzar fecha de pago -->
-<div class="confirm-overlay" id="advance-date-confirm" role="dialog" aria-modal="true" onclick="if(event.target===this)closeAdvanceDateConfirm()">
+<div class="confirm-overlay" id="advance-date-confirm" role="dialog" aria-modal="true" aria-labelledby="advance-date-heading" onclick="if(event.target===this)closeAdvanceDateConfirm()">
   <div class="confirm-box">
-    <h3>¿Avanzar fecha de pago?</h3>
+    <h3 id="advance-date-heading">¿Avanzar fecha de pago?</h3>
     <p id="advance-date-freq" style="font-size:11px;color:var(--text3);margin-bottom:6px;"></p>
     <p>El próximo pago cambiaría de<br>
       <strong id="advance-date-from" style="color:var(--text);"></strong>
@@ -2058,8 +2059,8 @@ body.light .tag { background: var(--surface2); }
     <div class="inv-plus-step" id="inv-plus-step2">
       <div style="font-size:11px;color:var(--text3);margin-bottom:10px;font-family:'Inter',sans-serif;" id="inv-plus-month-label"></div>
       <div class="inv-plus-amount-row">
-        <span class="inv-plus-amount-label">Importe a añadir (€)</span>
-        <input type="text" inputmode="decimal" class="inv-plus-amount-input" id="inv-plus-amount"
+        <span class="inv-plus-amount-label" id="inv-plus-amount-label">Importe a añadir (€)</span>
+        <input type="text" inputmode="decimal" class="inv-plus-amount-input" id="inv-plus-amount" aria-labelledby="inv-plus-amount-label"
           onfocus="this.select()" oninput="updateInvPlusPreview()" onkeydown="if(event.key==='Enter')confirmInvPlus()">
       </div>
       <div class="inv-plus-preview" id="inv-plus-preview" style="display:none;"></div>
@@ -2077,7 +2078,7 @@ body.light .tag { background: var(--surface2); }
     <h3 id="pf-txn-title"></h3>
     <div class="pf-txn-summary" id="pf-txn-summary"></div>
     <div class="pf-txn-filter-bar">
-      <select class="pf-txn-filter-select" id="pf-txn-filter" onchange="_txnFilter=this.value;renderTxnList()">
+      <select class="pf-txn-filter-select" id="pf-txn-filter" aria-label="Filtrar operaciones" onchange="_txnFilter=this.value;renderTxnList()">
         <option value="last">Última operación</option>
         <option value="month">Este mes</option>
         <option value="year">Este año</option>
@@ -2111,9 +2112,9 @@ body.light .tag { background: var(--surface2); }
 </div>
 
 <!-- Confirm eliminar operación de portfolio -->
-<div class="confirm-overlay" id="pf-txn-del-confirm" role="dialog" aria-modal="true" onclick="if(event.target===this)closeTxnDelConfirm()">
+<div class="confirm-overlay" id="pf-txn-del-confirm" role="dialog" aria-modal="true" aria-labelledby="pf-txn-del-heading" onclick="if(event.target===this)closeTxnDelConfirm()">
   <div class="confirm-box">
-    <h3>¿Eliminar operación?</h3>
+    <h3 id="pf-txn-del-heading">¿Eliminar operación?</h3>
     <p id="pf-txn-del-desc"></p>
     <div class="confirm-actions">
       <button class="btn-cancel" onclick="closeTxnDelConfirm()">Cancelar</button>
@@ -2178,6 +2179,15 @@ const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJ
 
 let currentUser = null; // { id, email, access_token, refresh_token }
 let _syncInProgress = false;
+// Generación de sesión: se incrementa en cada logout para que las escrituras
+// asíncronas iniciadas por la sesión anterior no continúen con la siguiente.
+let _sessionGen = 0;
+// true solo cuando el estado se ha cargado con éxito desde Supabase; mientras sea
+// false no se escribe en la nube (evita sobrescribir los datos reales con el estado vacío).
+let _stateLoaded = false;
+// Se incrementa en cada guardado iniciado; la recarga al volver a la pestaña lo usa
+// para no sustituir en memoria una edición hecha mientras la recarga estaba en curso.
+let _localEditSeq = 0;
 
 // ── TOKEN REFRESH ─────────────────────────────────────────────
 let _refreshTimer = null;
@@ -2195,14 +2205,19 @@ function scheduleTokenRefresh(expiresIn) {
 async function doTokenRefresh() {
   if (!currentUser) return true; // not logged in, nothing to refresh
   if (!currentUser.refresh_token) { showSessionExpired(); return false; } // user exists but no refresh token → expired
+  // Sesión para la que se pide el refresh: si durante la petición hay logout o se inicia
+  // otra sesión, la respuesta ya no le corresponde y no debe aplicarse a la sesión nueva.
+  const user = currentUser;
   try {
     const res = await fetch(`${SB_URL}/auth/v1/token?grant_type=refresh_token`, {
       method: 'POST',
       headers: { 'apikey': SB_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ refresh_token: currentUser.refresh_token })
+      body: JSON.stringify({ refresh_token: user.refresh_token })
     });
-    if (!res.ok) { currentUser = null; localStorage.removeItem('auth_user'); showSessionExpired(); return false; }
+    if (currentUser !== user) return false;
+    if (!res.ok) { currentUser = null; localStorage.removeItem('auth_user'); showSessionExpired(); _logoutIfAppVisible(); return false; }
     const data = await res.json();
+    if (currentUser !== user) return false;
     if (data.access_token && data.user) {
       currentUser.access_token  = data.access_token;
       currentUser.refresh_token = data.refresh_token || currentUser.refresh_token;
@@ -2211,13 +2226,15 @@ async function doTokenRefresh() {
       _sessionExpiredShown = false; // reset so future expiry warnings can appear
       return true;
     } else {
-      currentUser = null; localStorage.removeItem('auth_user'); showSessionExpired(); return false;
+      currentUser = null; localStorage.removeItem('auth_user'); showSessionExpired(); _logoutIfAppVisible(); return false;
     }
   } catch(e) {
+    if (currentUser !== user) return false; // la sesión cambió durante la petición
     // Network error — retry with backoff up to _REFRESH_MAX_RETRIES times
     _refreshRetryCount++;
     if (_refreshRetryCount < _REFRESH_MAX_RETRIES) {
       const backoff = Math.min(30000 * _refreshRetryCount, 300000);
+      clearTimeout(_refreshTimer);
       _refreshTimer = setTimeout(doTokenRefresh, backoff);
     } else {
       // Give up after max retries — show session expired
@@ -2225,6 +2242,18 @@ async function doTokenRefresh() {
       showSessionExpired();
     }
     return false;
+  }
+}
+
+// Si Supabase rechaza la sesión mientras la app está en uso, currentUser pasa a null
+// pero la interfaz seguía editable: getYearKey() caía en el sufijo 'local' y las
+// escrituras salían sin usuario. Se vuelve a la pantalla de login (solo si la app
+// estaba visible, para no borrar lo que se esté tecleando en el login al arrancar).
+function _logoutIfAppVisible() {
+  if (document.getElementById('auth-overlay').classList.contains('hidden')) {
+    closeModal(); closePMModal(); closeCatModal(); closeConfirm(); closeCalcModal(); closeHistModal();
+    closeTxnModal(); closeTxnDelConfirm(); closeGGModal(); closeGGDelConfirm();
+    doLogout();
   }
 }
 
@@ -2248,6 +2277,9 @@ async function doLogin() {
   const pass  = document.getElementById('login-pass').value;
   const errEl = document.getElementById('login-error');
   const btn   = document.getElementById('login-btn');
+  // El listener de Enter de login-pass llama a doLogin() aunque el botón esté deshabilitado
+  if (btn.disabled) return;
+  clearTimeout(_resendMsgTimer); errEl.style.color = '';
   errEl.textContent = '';
   if (!email || !pass) { errEl.textContent = 'Completa todos los campos'; return; }
   btn.disabled = true; btn.textContent = 'Entrando...';
@@ -2293,6 +2325,8 @@ async function doRegister() {
   const errEl = document.getElementById('reg-error');
   const sucEl = document.getElementById('reg-success');
   const btn   = document.getElementById('reg-btn');
+  // El listener de Enter de reg-pass llama a doRegister() aunque el botón esté deshabilitado
+  if (btn.disabled) return;
   errEl.textContent = ''; sucEl.textContent = '';
   if (!email || !pass) { errEl.textContent = 'Completa todos los campos'; return; }
   if (pass.length < 6) { errEl.textContent = 'La contraseña debe tener al menos 6 caracteres'; return; }
@@ -2334,6 +2368,7 @@ function doLogout() {
   // Revoke token on server and cancel refresh timer
   clearTimeout(_refreshTimer);
   clearTimeout(_saveYearTimer);
+  _saveYearTimer = null; // si no, el id cancelado (no nulo) bloquea la recarga al volver a la pestaña
   if (currentUser && currentUser.access_token) {
     fetch(`${SB_URL}/auth/v1/logout`, {
       method: 'POST',
@@ -2343,6 +2378,8 @@ function doLogout() {
   currentUser = null;
   localStorage.removeItem('auth_user');
   _syncInProgress = false;
+  _sessionGen++;
+  _stateLoaded = false;
   // Vaciar la cola de sync para que los datos del usuario anterior
   // no se envíen con el token del próximo usuario (bug: filtrado entre usuarios)
   _sbSyncQueue = [];
@@ -2356,7 +2393,9 @@ function doLogout() {
   K.budget = 'gr_budget';
   K.compound = 'gr_compound';
   K.calcSalary = 'gr_calc_salary';
-  // Reset year data
+  // Reset year data (e invalidar una carga de año que siga en curso)
+  _invYearLoadSeq++;
+  _invYearTarget = null;
   invYear  = new Date().getFullYear();
   yearData = null;
   const yearLabelEl = document.getElementById('inv-year-label');
@@ -2395,6 +2434,8 @@ function doLogout() {
   nextId    = 1;
   filterCat = 'all';
   sortMode  = 'default';
+  const sortSel = document.querySelector('.sort-select');
+  if (sortSel) sortSel.value = 'default';
   // Clear rendered DOM to prevent previous user's data from being visible
   const statsEl = document.getElementById('stats');
   if (statsEl) statsEl.innerHTML = '';
@@ -2432,6 +2473,10 @@ function doLogout() {
   _ccState = { initial: 1000, periodic: 100, periodicFreq: 'monthly', rate: 7, years: 10, taxRate: 0, collapsed: false };
   const ccEl = document.getElementById('inv-compound-calc');
   if (ccEl) { delete ccEl.dataset.initialized; delete ccEl.dataset.ccLoaded; }
+  // Reset de la calculadora de presupuesto: _budgetLoad() solo sustituye _budgetCats si
+  // el nuevo usuario tiene datos guardados; si no, vería (y guardaría) los del anterior.
+  _budgetCats = JSON.parse(JSON.stringify(_budgetDefault));
+  _budgetDelIdx = null;
 }
 
 function onAuthSuccess() {
@@ -2535,6 +2580,7 @@ function hideEmailSuggestions() {
 }
 
 let pendingConfirmEmail = '';
+let _resendMsgTimer = null;
 
 async function resendConfirmSilent(email) {
   pendingConfirmEmail = email;
@@ -2557,9 +2603,15 @@ async function resendConfirm() {
       headers: { 'apikey': SB_KEY, 'Content-Type': 'application/json' },
       body: JSON.stringify({ type: 'signup', email })
     });
+    if (!res.ok) {
+      errEl.style.color = '';
+      errEl.textContent = 'No se pudo reenviar el email. Inténtalo más tarde.';
+      return;
+    }
     errEl.style.color = 'var(--green)';
     errEl.innerHTML = '✓ Email reenviado. Revisa tu bandeja.';
-    setTimeout(() => { errEl.style.color = ''; errEl.innerHTML = ''; }, 4000);
+    clearTimeout(_resendMsgTimer);
+    _resendMsgTimer = setTimeout(() => { errEl.style.color = ''; errEl.innerHTML = ''; }, 4000);
   } catch(e) {
     const errEl = document.getElementById('login-error');
     errEl.style.color = '';
@@ -2588,14 +2640,20 @@ async function checkSession() {
     const saved = localStorage.getItem('auth_user');
     if (saved) {
       currentUser = JSON.parse(saved);
+      const sessionUser = currentUser;
       // Attempt an immediate refresh so the token is fresh before making cloud calls
       let refreshOk = true;
       if (currentUser.refresh_token) {
         refreshOk = await doTokenRefresh();
+        // El formulario de login sigue visible durante el refresh: si entretanto se inició
+        // sesión manualmente, doLogin() ya llamó a onAuthSuccess() para esa sesión.
+        if (currentUser && currentUser !== sessionUser) return;
         // If refresh failed due to network (not auth), retry once after 2s
         if (!refreshOk && currentUser) {
           await new Promise(r => setTimeout(r, 2000));
+          if (currentUser && currentUser !== sessionUser) return;
           refreshOk = await doTokenRefresh();
+          if (currentUser && currentUser !== sessionUser) return;
         }
       } else {
         scheduleTokenRefresh(null);
@@ -2653,6 +2711,9 @@ let catDraft  = [];
 
 // ── PERSIST ───────────────────────────────────────────────────
 async function persist() {
+  _localEditSeq++;
+  if (!_stateLoaded) { showLoadError(); return; }
+  const gen = _sessionGen;
   const dataStr   = JSON.stringify(data);
   const pmStr     = JSON.stringify(pm);
   const catsStr   = JSON.stringify(cats);
@@ -2663,6 +2724,7 @@ async function persist() {
     sbSet(K.cats,   catsStr),
     sbSet(K.nextId, nextIdStr),
   ]);
+  if (gen !== _sessionGen) return; // la sesión cambió durante el guardado
   const allOk = results.every(r => r);
   if (allOk) {
     showToast();
@@ -2693,6 +2755,18 @@ function showSaveError() {
   clearTimeout(toastTimer);
   t.style.color = 'var(--red)';
   t.textContent = '⚠ Error al guardar — comprueba tu conexión';
+  t.classList.add('show');
+  toastTimer = setTimeout(() => {
+    t.classList.remove('show');
+    setTimeout(() => { t.style.color = ''; t.textContent = '✓ guardado'; }, 250);
+  }, 4000);
+}
+
+function showLoadError() {
+  const t = document.getElementById('toast');
+  clearTimeout(toastTimer);
+  t.style.color = 'var(--red)';
+  t.textContent = '⚠ No se pudieron cargar los datos — comprueba tu conexión';
   t.classList.add('show');
   toastTimer = setTimeout(() => {
     t.classList.remove('show');
@@ -2877,7 +2951,9 @@ function render() {
   renderCol('año',  'Anual',      'col-ano');
 
   // Si la vista de inversiones está visible, actualizarla también
-  if (document.getElementById('view-perdidas') && document.getElementById('view-perdidas').style.display !== 'none') {
+  const vPerd = document.getElementById('view-perdidas');
+  const vInv  = document.getElementById('view-inversiones');
+  if ((vPerd && vPerd.style.display !== 'none') || (vInv && vInv.style.display !== 'none')) {
     renderInvTable();
   }
 }
@@ -2910,8 +2986,11 @@ function renderCol(freq, title, colId) {
     // Group by category — show all cats when filter=all, only matching cat when filtered
     const allItemsForFreq = data.filter(d => d.freq === freq && (filterCat === 'all' || d.cat === filterCat));
     let anyRendered = false;
+    const renderedLabels = new Set(); // dos categorías con el mismo nombre no deben duplicar los gastos
     cats.forEach(c => {
       if (filterCat !== 'all' && c.label !== filterCat) return;
+      if (renderedLabels.has(c.label)) return;
+      renderedLabels.add(c.label);
       const cItems = allItemsForFreq.filter(d => d.cat === c.label);
       if (!cItems.length) return;
       anyRendered = true;
@@ -2937,7 +3016,8 @@ function daysUntil(d) {
   if (!d) return null;
   const [y,m,day] = d.split('-').map(Number);
   const dt = new Date(y, m - 1, day);
-  const diff = Math.ceil((dt - getToday()) / 86400000);
+  // Math.round: ambas fechas son medianoche local; un cambio de horario (±1h) no debe sumar un día
+  const diff = Math.round((dt - getToday()) / 86400000);
   return diff;
 }
 
@@ -2979,7 +3059,9 @@ function populateCardSelect(sel) {
     + `<option value="" ${!sel?'selected':''}>—</option>`;
 }
 
+let _itemModalSeq = 0; // se incrementa en cada apertura del modal de gasto
 function openModal(id) {
+  _itemModalSeq++;
   editingId = id !== undefined ? id : null;
   _savingItem = false;
   const saveBtn = document.getElementById('btn-save-item');
@@ -3016,11 +3098,14 @@ function advanceDate() {
   if (!current) { dateInput.focus(); return; }
 
   const [y, m, d] = current.split('-').map(Number);
-  const next = new Date(y, m - 1, d);
-  if      (freq === 'mes')  next.setMonth(next.getMonth() + 1);
-  else if (freq === 'trim') next.setMonth(next.getMonth() + 3);
-  else if (freq === 'sem')  next.setMonth(next.getMonth() + 6);
-  else                      next.setFullYear(next.getFullYear() + 1);
+  let addMonths;
+  if      (freq === 'mes')  addMonths = 1;
+  else if (freq === 'trim') addMonths = 3;
+  else if (freq === 'sem')  addMonths = 6;
+  else                      addMonths = 12;
+  // Limitar el día al último día del mes destino (31/01 + 1 mes = 28/02, no 03/03)
+  const lastDayTarget = new Date(y, m - 1 + addMonths + 1, 0).getDate();
+  const next = new Date(y, m - 1 + addMonths, Math.min(d, lastDayTarget));
 
   const pad = n => String(n).padStart(2, '0');
   _advanceDateNext = `${next.getFullYear()}-${pad(next.getMonth() + 1)}-${pad(next.getDate())}`;
@@ -3061,10 +3146,16 @@ async function saveItem() {
   const saveBtn = document.getElementById('btn-save-item');
   if (saveBtn) { saveBtn.disabled = true; saveBtn.textContent = 'Guardando...'; }
   _savingItem = true;
+  const modalSeq = _itemModalSeq;
   await persist();
-  _savingItem = false;
-  if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = 'Guardar'; }
-  closeModal(); render();
+  // Si durante el guardado el modal se cerró (Esc/clic fuera) y se volvió a abrir,
+  // no tocar ni cerrar el modal nuevo: pertenece a otra edición en curso.
+  if (modalSeq === _itemModalSeq) {
+    _savingItem = false;
+    if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = 'Guardar'; }
+    closeModal();
+  }
+  render();
 }
 function editItem(id) { openModal(id); }
 
@@ -3122,13 +3213,14 @@ function removeCatRow(i) { catDraft.splice(i,1); renderCatList(); }
 async function saveCats() {
   const oldLabels = new Map(cats.map(c => [c.id, c.label]));
   cats = catDraft.filter(c => c.label.trim());
-  // Remap data items if a category label changed
+  // Remap data items if a category label changed (en una sola pasada sobre los
+  // datos originales, para que un intercambio de nombres no encadene remapeos)
+  const renames = new Map();
   cats.forEach(c => {
     const old = oldLabels.get(c.id);
-    if (old && old !== c.label) {
-      data = data.map(d => d.cat === old ? {...d, cat: c.label} : d);
-    }
+    if (old && old !== c.label) renames.set(old, c.label);
   });
+  if (renames.size) data = data.map(d => renames.has(d.cat) ? {...d, cat: renames.get(d.cat)} : d);
   // Remap items whose category was deleted → first available category
   const validLabels = new Set(cats.map(c => c.label));
   data = data.map(d => validLabels.has(d.cat) ? d : {...d, cat: cats[0]?.label || ''});
@@ -3273,9 +3365,17 @@ function askDelete(id) {
 
 // ── KEYBOARD & OVERLAYS ───────────────────────────────────────
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeModal(); closePMModal(); closeCatModal(); closeConfirm(); closeCalcModal(); closeBudgetModal(); closeBudgetDelConfirm(); closeHistModal(); closeInvPlus(); closeCopyConfirm(); closeAdvanceDateConfirm(); closeTxnModal(); closeTxnDelConfirm(); }
+  if (e.key === 'Escape') {
+    // Confirmaciones abiertas encima de otro diálogo: Esc cierra solo la de arriba
+    // (si no, también se cerraba el diálogo de debajo y se perdía lo no guardado).
+    const nested = [['advance-date-confirm', closeAdvanceDateConfirm], ['gg-del-confirm', closeGGDelConfirm],
+                    ['pf-txn-del-confirm', closeTxnDelConfirm], ['budget-del-confirm', closeBudgetDelConfirm]];
+    const top = nested.find(([id]) => document.getElementById(id).classList.contains('open'));
+    if (top) { top[1](); return; }
+    closeModal(); closePMModal(); closeCatModal(); closeConfirm(); closeCalcModal(); closeBudgetModal(); closeBudgetDelConfirm(); closeHistModal(); closeInvPlus(); closeCopyConfirm(); closeAdvanceDateConfirm(); closeTxnModal(); closeTxnDelConfirm(); closeGGModal(); closeGGDelConfirm(); }
   if (e.key === 'Enter') {
-    if (document.getElementById('modal').classList.contains('open')) {
+    // Con la confirmación de avanzar fecha abierta encima del modal, Enter no debe guardar el gasto de debajo
+    if (document.getElementById('modal').classList.contains('open') && !document.getElementById('advance-date-confirm').classList.contains('open')) {
       const tag = document.activeElement?.tagName;
       if (tag !== 'SELECT' && tag !== 'BUTTON') saveItem();
     }
@@ -3314,8 +3414,9 @@ let yearData = null; // loaded after auth in reloadStateFromStorage
 
 async function loadYearData(y) {
   const yk = getYearKey(y);
+  // Los errores de red/HTTP se propagan: no deben confundirse con "año sin datos"
+  const v = await sbGet(yk);
   try {
-    const v = await sbGet(yk);
     if (v) {
       const parsed = JSON.parse(v);
       // Normalize: ensure all three sections exist with a rows array,
@@ -3351,9 +3452,13 @@ async function saveYearData() {
 
 async function saveYearDataSnapshot(y, snapshot) {
   if (!snapshot) return;
+  _localEditSeq++;
+  if (!_stateLoaded) { showLoadError(); return; }
+  const gen = _sessionGen;
   const yk  = getYearKey(y);
   const val = JSON.stringify(snapshot);
   const ok = await sbSet(yk, val);
+  if (gen !== _sessionGen) return;
   if (ok) {
     showToast();
   } else {
@@ -3364,29 +3469,83 @@ async function saveYearDataSnapshot(y, snapshot) {
 
 // Debounce: espera 400ms de inactividad antes de guardar
 let _saveYearTimer = null;
+// true si se omitió el repintado por tener el foco en una tabla (p. ej. al confirmar
+// una celda con Enter, que dispara change sin perder el foco): se repinta al salir.
+let _invRenderPending = false;
+document.addEventListener('focusout', () => {
+  if (!_invRenderPending) return;
+  setTimeout(() => {
+    if (!_invRenderPending || !yearData) return;
+    const ae = document.activeElement;
+    if (ae && ae.closest && ae.closest('.inv-island')) return; // sigue en una tabla (o la ventana perdió el foco)
+    _invRenderPending = false;
+    renderInvTable();
+  }, 0);
+});
 function saveYearDataAndRender() {
   // Re-render inmediato si no hay foco en la tabla (evita perder el foco)
   const active = document.activeElement;
   const inTable = active && active.closest && active.closest('.inv-island');
   if (!inTable) renderInvTable();
+  else _invRenderPending = true;
   // Capturar año y datos en este momento para evitar que un cambio de año
   // durante el debounce guarde los datos del año equivocado (bug: invYear mutable).
   // Se serializa el snapshot ahora (no en el timeout) porque yearData es un objeto
   // mutable: si changeInvYear() lo reemplaza antes de que expire el debounce,
   // dataToSave seguiría apuntando al nuevo objeto y se guardarían datos incorrectos.
+  _localEditSeq++;
   const yearToSave = invYear;
   const snapshotStr = JSON.stringify(yearData);
+  const gen = _sessionGen;
   clearTimeout(_saveYearTimer);
   _saveYearTimer = setTimeout(async () => {
+    _saveYearTimer = null;
+    if (gen !== _sessionGen) return;
+    if (!_stateLoaded) { showLoadError(); return; }
     const yk  = getYearKey(yearToSave);
     const ok = await sbSet(yk, snapshotStr);
+    if (gen !== _sessionGen) return;
     if (ok) { showToast(); } else { _sbSyncBackground([[yk, snapshotStr]]); showSaveError(); }
   }, 400);
 }
 
+let _invYearTarget = null;
+let _invYearLoadSeq = 0;
 async function changeInvYear(delta) {
-  invYear += delta;
-  yearData = await loadYearData(invYear);
+  // invYear y yearData solo se actualizan juntos, cuando termina la carga del año
+  // pedido. Así una edición hecha durante la carga se guarda en su propio año y
+  // una respuesta lenta de un clic anterior no sobrescribe la del último clic.
+  const target = (_invYearTarget !== null ? _invYearTarget : invYear) + delta;
+  _invYearTarget = target;
+  const seq = ++_invYearLoadSeq;
+  // Guardar ya cualquier edición pendiente del año actual: si no, un saveYearData()
+  // en el año nuevo cancelaría ese temporizador y la edición se perdería.
+  if (_saveYearTimer) await saveYearData();
+  let loaded;
+  try {
+    loaded = await loadYearData(target);
+  } catch(e) {
+    if (seq === _invYearLoadSeq) { _invYearTarget = null; showLoadError(); }
+    return;
+  }
+  if (seq !== _invYearLoadSeq) return;
+  // Una edición hecha en el año actual mientras se cargaba el nuevo deja un guardado
+  // con debounce pendiente. Tras el cambio de año, cualquier saveYearData() lo
+  // cancelaría (clearTimeout) guardando el yearData del año nuevo: la edición se perdía.
+  // Se guarda ahora, mientras invYear/yearData siguen siendo los del año de la edición.
+  while (_saveYearTimer && yearData) {
+    await saveYearData();
+    if (seq !== _invYearLoadSeq) return;
+  }
+  // Los diálogos abiertos durante la carga guardan un índice de fila (o el año)
+  // del yearData anterior: al confirmarse actuarían sobre la fila equivalente del
+  // año nuevo. Se cierran antes de sustituir invYear/yearData.
+  if (_pendingDeleteSection !== null) closeConfirm();
+  closeInvPlus(); closeTxnDelConfirm(); closeTxnModal();
+  closeGGDelConfirm(); closeGGModal(); closeCopyConfirm();
+  _invYearTarget = null;
+  invYear = target;
+  yearData = loaded;
   updateYearLabel();
   renderInvTable();
 }
@@ -3465,7 +3624,7 @@ function makeIsland(cssClass, title, addFn, tableRows, extraCol, section) {
         <thead><tr>
           <th></th>
           ${pctTh}
-          ${['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'].map((m,i) => `<th${i===new Date().getMonth() ? ' style="color:var(--text);font-weight:700;"' : ''}>${m}</th>`).join('')}
+          ${['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'].map((m,i) => `<th${i===new Date().getMonth() && invYear === new Date().getFullYear() ? ' style="color:var(--text);font-weight:700;"' : ''}>${m}</th>`).join('')}
           <th>FIN AÑO</th>
         </tr></thead>
         <tbody>${tableRows}</tbody>
@@ -3492,7 +3651,7 @@ function makeIslandGastos(tableRows) {
         </colgroup>
         <thead><tr>
           <th></th>
-          ${['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'].map((m,i) => `<th${i===new Date().getMonth() ? ' style="color:var(--text);font-weight:700;"' : ''}>${m}</th>`).join('')}
+          ${['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'].map((m,i) => `<th${i===new Date().getMonth() && invYear === new Date().getFullYear() ? ' style="color:var(--text);font-weight:700;"' : ''}>${m}</th>`).join('')}
           <th>FIN AÑO</th>
         </tr></thead>
         <tbody>${tableRows}</tbody>
@@ -3501,22 +3660,34 @@ function makeIslandGastos(tableRows) {
 }
 
 // ── ESTADO DE COLAPSO DE APARTADOS (persistido en localStorage) ──
+// Clave por usuario, como el resto de preferencias (K.theme, K.budget...)
+function ggCollapsedKey() {
+  const uid = currentUser?.id?.slice(0, 8);
+  return uid ? `gr_gg_collapsed_${uid}` : 'gr_gg_collapsed';
+}
 function ggCollapsedSet() {
   try {
-    const raw = localStorage.getItem('gr_gg_collapsed');
+    const raw = localStorage.getItem(ggCollapsedKey());
     return raw ? new Set(JSON.parse(raw)) : new Set();
   } catch(e) { return new Set(); }
 }
 function ggSetCollapsed(groupId, collapsed) {
   const set = ggCollapsedSet();
   if (collapsed) set.add(groupId); else set.delete(groupId);
-  try { localStorage.setItem('gr_gg_collapsed', JSON.stringify([...set])); } catch(e) {}
+  try { localStorage.setItem(ggCollapsedKey(), JSON.stringify([...set])); } catch(e) {}
 }
 function toggleGGCollapse(groupId) {
   const set = ggCollapsedSet();
   const collapsed = !set.has(groupId);
   ggSetCollapsed(groupId, collapsed);
+  // renderInvTable() sustituye la cabecera: devolver el foco si lo tenía (uso con teclado)
+  const ae = document.activeElement;
+  const hadFocus = !!(ae && ae.getAttribute && ae.getAttribute('data-gg-toggle') === groupId);
   renderInvTable();
+  if (hadFocus) {
+    const el = Array.from(document.querySelectorAll('[data-gg-toggle]')).find(x => x.getAttribute('data-gg-toggle') === groupId);
+    if (el) el.focus();
+  }
 }
 
 // Construye las filas de la tabla de "Gastos" agrupadas por apartado.
@@ -3545,7 +3716,8 @@ function makeGastosRows(rows) {
       ondragleave="dragLeaveGroup(event)"
       ondrop="dragDropOnGroup(event,'${g.id}')">
       <td class="inv-group-label">
-        <div class="inv-group-label-inner">
+        <div class="inv-group-label-inner" tabindex="0" role="button" aria-expanded="${!collapsed}" data-gg-toggle="${g.id}"
+          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleGGCollapse('${g.id}')}">
           <span class="inv-group-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           <span class="inv-group-name">${esc(g.label)}</span>
           <span class="inv-group-count">${idxRows.length}</span>
@@ -3571,7 +3743,8 @@ function makeGastosRows(rows) {
       ondragleave="dragLeaveGroup(event)"
       ondrop="dragDropOnGroup(event,'')">
       <td class="inv-group-label">
-        <div class="inv-group-label-inner">
+        <div class="inv-group-label-inner" tabindex="0" role="button" aria-expanded="${!collapsed}" data-gg-toggle="__none__"
+          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleGGCollapse('__none__')}">
           <span class="inv-group-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           <span class="inv-group-name">Sin apartado</span>
           <span class="inv-group-count">${ungrouped.length}</span>
@@ -3601,7 +3774,12 @@ function dragDropOnGroup(e, groupId) {
   e.stopPropagation();
   e.currentTarget.classList.remove('drag-over-group');
   if (dragSrcSection !== 'gastos' || dragSrcIdx === null || dragSrcIdx === undefined) return;
-  assignGastoGroup(dragSrcIdx, groupId);
+  const srcIdx = dragSrcIdx;
+  // assignGastoGroup() repinta y elimina la fila origen: su dragend puede no llegar a dispararse,
+  // así que se limpia aquí (igual que en dragDrop) para que un drop externo posterior no use un índice obsoleto.
+  dragSrcSection = null;
+  dragSrcIdx = null;
+  assignGastoGroup(srcIdx, groupId);
 }
 // Asigna (o quita, si groupId es '') el apartado de un gasto por su índice en yearData.gastos.rows
 function assignGastoGroup(ri, groupId) {
@@ -3780,6 +3958,7 @@ function makePortfolioIsland(invRows, inv, history) {
         <input type="text" inputmode="decimal" class="inv-cell-input pf-num-input pf-price-input ${val ? 'has-value' : 'empty'}"
           value="${val ? val.toFixed(2).replace('.', ',') : ''}"
           placeholder="—"
+          aria-label="Precio ${esc(it.label)} · ${m}"
           onchange="setMonthPrice(${it.ri},'${m}',this.value)"
           onfocus="this.select()">
       </td>`;
@@ -4084,23 +4263,35 @@ let _ccState = {
 };
 
 function _ccSave() {
+  _localEditSeq++;
   // Save to localStorage as a fast local cache
   try { localStorage.setItem(K.compound || 'gr_compound', JSON.stringify(_ccState)); } catch(e) {}
   // Also persist to Supabase so other devices see the same state
-  if (currentUser) {
-    sbSet(K.compound || 'gr_compound', JSON.stringify(_ccState)).catch(() => {});
+  if (currentUser && _stateLoaded) {
+    const ccKey = K.compound || 'gr_compound';
+    const ccVal = JSON.stringify(_ccState);
+    _sbLatestVal.set(ccKey, ccVal);
+    // sbSet no rechaza: devuelve false si falla, y antes ese false se ignoraba (la nube
+    // conservaba el valor antiguo y loadStateFromCloud() lo imponía al recargar).
+    // La cola reintenta, mantiene el orden y descarta valores viejos de la misma clave.
+    _sbSyncBackground([[ccKey, ccVal]]);
   }
 }
 async function _ccLoad() {
+  // Sesión que pide los datos: si hay logout durante la petición, la respuesta no debe
+  // mezclarse en _ccState (doLogout ya lo reinició) ni llegar al siguiente usuario.
+  const gen = _sessionGen;
   // Try Supabase first (the authoritative source); fall back to localStorage cache
   if (currentUser) {
     try {
       const raw = await sbGet(K.compound || 'gr_compound');
+      if (gen !== _sessionGen) return;
       if (raw) {
         const parsed = JSON.parse(raw);
         if (parsed && typeof parsed === 'object') { _ccState = Object.assign({}, _ccState, parsed); return; }
       }
     } catch(e) {}
+    if (gen !== _sessionGen) return;
   }
   // Fallback: localStorage (same-device cache or pre-login state)
   try {
@@ -4159,7 +4350,10 @@ async function renderCompoundCalc() {
   // State may already be pre-loaded from loadStateFromCloud; only fetch from
   // Supabase again if we haven't already (e.g. first render before initSync completed)
   if (!container.dataset.ccLoaded) {
+    const gen = _sessionGen;
     await _ccLoad();
+    // Logout durante la carga: doLogout() ya reinició el contenedor y _ccState
+    if (gen !== _sessionGen) return;
   }
   container.dataset.ccLoaded = '1';
   const s = _ccState;
@@ -4168,7 +4362,8 @@ async function renderCompoundCalc() {
 
   container.innerHTML = `
   <div class="inv-island island-compound${s.collapsed ? ' collapsed' : ''}" id="cc-island">
-    <div class="inv-island-header" onclick="toggleCompoundCalc()">
+    <div class="inv-island-header" onclick="toggleCompoundCalc()" role="button" tabindex="0" aria-controls="cc-body" aria-expanded="${!s.collapsed}"
+      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCompoundCalc()}">
       <span class="inv-island-title">Calculadora de interés compuesto</span>
       <span class="cc-collapse-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -4178,39 +4373,39 @@ async function renderCompoundCalc() {
     <div class="cc-body" id="cc-body">
     <div class="cc-form">
       <div class="cc-field">
-        <label>Aportación inicial</label>
+        <label for="cc-initial">Aportación inicial</label>
         <div class="cc-input-group">
           <input type="text" inputmode="decimal" id="cc-initial" value="${trimNumThousands(s.initial)}" onfocus="this.select()" onchange="ccUpdateField('initial', this.value)">
           <span class="cc-suffix">€</span>
         </div>
       </div>
       <div class="cc-field">
-        <label>Aportación periódica</label>
+        <label for="cc-periodic">Aportación periódica</label>
         <div class="cc-input-group">
           <input type="text" inputmode="decimal" id="cc-periodic" value="${trimNumThousands(s.periodic)}" onfocus="this.select()" onchange="ccUpdateField('periodic', this.value)">
           <span class="cc-suffix">€</span>
         </div>
       </div>
       <div class="cc-field">
-        <label>Frecuencia de aportación</label>
+        <label for="cc-periodic-freq">Frecuencia de aportación</label>
         <select id="cc-periodic-freq" onchange="ccUpdateField('periodicFreq', this.value)">${periodicOptions}</select>
       </div>
       <div class="cc-field">
-        <label>Interés anual</label>
+        <label for="cc-rate">Interés anual</label>
         <div class="cc-input-group">
           <input type="text" inputmode="decimal" id="cc-rate" value="${trimNum(s.rate)}" onfocus="this.select()" onchange="ccUpdateField('rate', this.value)">
           <span class="cc-suffix">%</span>
         </div>
       </div>
       <div class="cc-field">
-        <label>Años</label>
+        <label for="cc-years">Años</label>
         <div class="cc-input-group">
           <input type="text" inputmode="decimal" id="cc-years" value="${trimNum(s.years)}" onfocus="this.select()" onchange="ccUpdateField('years', this.value)">
           <span class="cc-suffix">años</span>
         </div>
       </div>
       <div class="cc-field">
-        <label>% Impuestos sobre ganancias</label>
+        <label for="cc-tax">% Impuestos sobre ganancias</label>
         <div class="cc-input-group">
           <input type="text" inputmode="decimal" id="cc-tax" value="${trimNum(s.taxRate)}" onfocus="this.select()" onchange="ccUpdateField('taxRate', this.value)">
           <span class="cc-suffix">%</span>
@@ -4242,7 +4437,11 @@ function toggleCompoundCalc() {
   _ccState.collapsed = !_ccState.collapsed;
   _ccSave();
   const island = document.getElementById('cc-island');
-  if (island) island.classList.toggle('collapsed', _ccState.collapsed);
+  if (island) {
+    island.classList.toggle('collapsed', _ccState.collapsed);
+    const hdr = island.querySelector('.inv-island-header');
+    if (hdr) hdr.setAttribute('aria-expanded', String(!_ccState.collapsed));
+  }
 }
 
 function ccUpdateField(field, value) {
@@ -4584,7 +4783,7 @@ function makeInvReadOnlyRow(row, ri, year) {
   const monthly = calcInvMonthlyFromTxns(row, year);
   const pctCell = `<td class="inv-pct-cell">
     <input type="text" inputmode="decimal" class="inv-pct-input"
-      value="${esc(String(pctVal))}" placeholder="—"
+      value="${esc(String(pctVal).replace('.', ','))}" placeholder="—" aria-label="Porcentaje ${esc(row.label)}"
       onchange="setPctValue('inversiones',${ri},this.value)"
       onfocus="this.select()">
   </td>`;
@@ -4594,11 +4793,11 @@ function makeInvReadOnlyRow(row, ri, year) {
     <td class="inv-row-label">
       <div class="inv-row-label-flex">
         <span class="inv-drag-handle" style="opacity:.2;cursor:default;">⠿</span>
-        <input type="text" value="${esc(row.label)}"
+        <input type="text" value="${esc(row.label)}" aria-label="Nombre de la fila"
           style="background:none;border:none;outline:none;color:var(--text2);font-size:12px;font-family:'Inter',sans-serif;width:calc(100% - 50px);min-width:120px;cursor:text;"
           onchange="renameRow('inversiones',${ri},this.value)">
-        <button class="inv-row-plus-btn" onclick="openTxnModal(${ri})" title="Añadir operación en portfolio">+</button>
-        <button class="inv-row-del-btn" onclick="deleteRow('inversiones',${ri})" title="Eliminar fila">✕</button>
+        <button class="inv-row-plus-btn" onclick="openTxnModal(${ri})" title="Añadir operación en portfolio" aria-label="Añadir operación en portfolio · ${esc(row.label)}">+</button>
+        <button class="inv-row-del-btn" onclick="deleteRow('inversiones',${ri})" title="Eliminar fila" aria-label="Eliminar fila ${esc(row.label)}">✕</button>
       </div>
     </td>
     ${pctCell}`;
@@ -4636,11 +4835,11 @@ function makeEditableRow(row, ri, section, showPct) {
     <td class="inv-row-label">
       <div class="inv-row-label-flex">
         <span class="inv-drag-handle" title="Arrastrar para reordenar">⠿</span>
-        <input type="text" value="${esc(row.label)}"
+        <input type="text" value="${esc(row.label)}" aria-label="Nombre de la fila"
           style="background:none;border:none;outline:none;color:var(--text2);font-size:12px;font-family:'Inter',sans-serif;width:calc(100% - 74px);min-width:120px;cursor:text;"
           onchange="renameRow('${section}',${ri},this.value)">
-        <button class="inv-row-plus-btn" onclick="openInvPlus('${section}',${ri})" title="${{ingresos:'Añadir ingreso',gastos:'Añadir gasto',inversiones:'Añadir inversión'}[section]||'Añadir'}">+</button>
-        <button class="inv-row-del-btn" onclick="deleteRow('${section}',${ri})" title="Eliminar fila">✕</button>
+        <button class="inv-row-plus-btn" onclick="openInvPlus('${section}',${ri})" title="${{ingresos:'Añadir ingreso',gastos:'Añadir gasto',inversiones:'Añadir inversión'}[section]||'Añadir'}" aria-label="${{ingresos:'Añadir ingreso',gastos:'Añadir gasto',inversiones:'Añadir inversión'}[section]||'Añadir'} · ${esc(row.label)}">+</button>
+        <button class="inv-row-del-btn" onclick="deleteRow('${section}',${ri})" title="Eliminar fila" aria-label="Eliminar fila ${esc(row.label)}">✕</button>
       </div>
     </td>
     ${pctCell}`;
@@ -4650,6 +4849,7 @@ function makeEditableRow(row, ri, section, showPct) {
     html += `<td><input type="text" inputmode="decimal" class="inv-cell-input ${hasVal ? 'has-value' : 'empty'}"
       value="${hasVal ? val.toFixed(2).replace('.', ',') : ''}"
       placeholder="0"
+      aria-label="${esc(row.label)} · ${m}"
       onchange="setCellValue('${section}',${ri},'${m}',this.value)"
       onfocus="this.select()"
       oninput="growInput(this)"
@@ -4663,7 +4863,8 @@ function makeEditableRow(row, ri, section, showPct) {
 function makeTotalRow(totals, label, cssClass, showPct, rows) {
   let pctCell = '';
   if (showPct) {
-    const pctSum = (rows || []).reduce((s, r) => s + (parseFloat(r._pct) || 0), 0);
+    // Redondeo para eliminar el error de coma flotante (30,9 + 33,3 + 35,8 = 99.99999999999999)
+    const pctSum = Math.round((rows || []).reduce((s, r) => s + (parseFloat(r._pct) || 0), 0) * 1e6) / 1e6;
     const pctDisplay = pctSum ? `${pctSum.toFixed(0)}%` : '—';
     const color = pctSum > 100 ? 'var(--red)' : pctSum === 100 ? 'var(--green)' : 'var(--text2)';
     pctCell = `<td class="inv-pct-cell" style="background:var(--surface2);text-align:center;font-size:11px;font-weight:700;color:${color};padding:8px 4px;">${pctDisplay}</td>`;
@@ -4698,9 +4899,13 @@ async function buildHistModal() {
 
   // Collect data per year from Supabase in parallel
   const yearDataMap = {};
+  const gen = _sessionGen;
+  let loadFailed = false;
   await Promise.all(yearsToCheck.map(async y => {
+    let raw;
+    // sbGet lanza ante errores de red/HTTP: no deben contarse como "año sin datos"
+    try { raw = await sbGet(getYearKey(y)); } catch(e) { loadFailed = true; return; }
     try {
-      const raw = await sbGet(getYearKey(y));
       if (!raw) return;
       const d = JSON.parse(raw);
       const rows = d?.inversiones?.rows || [];
@@ -4708,6 +4913,13 @@ async function buildHistModal() {
       if (total > 0) yearDataMap[y] = d;
     } catch(e) {}
   }));
+
+  // Logout u otra sesión durante la carga: no pintar los datos del usuario anterior
+  if (gen !== _sessionGen) return;
+  if (loadFailed) {
+    document.getElementById('hist-content').innerHTML = '<div class="hist-empty">⚠ No se pudieron cargar los datos — comprueba tu conexión</div>';
+    return;
+  }
 
   const years = Object.keys(yearDataMap).map(Number).sort();
 
@@ -4746,8 +4958,9 @@ async function buildHistModal() {
     labelTotals[label] = { byYear: {}, total: 0 };
     years.forEach(y => {
       const rows = yearDataMap[y]?.inversiones?.rows || [];
-      const row = rows.find(r => r.label === label);
-      const amount = row && Array.isArray(row._txns) ? row._txns.reduce((s, t) => s + (parseFloat(t.amount) || 0), 0) : 0;
+      // Sumar todas las filas con esa etiqueta (puede haber varias en el mismo año, p.ej. "Nueva fila")
+      const amount = rows.filter(r => r.label === label).reduce((sum, row) =>
+        sum + (Array.isArray(row._txns) ? row._txns.reduce((s, t) => s + (parseFloat(t.amount) || 0), 0) : 0), 0);
       labelTotals[label].byYear[y] = amount;
       labelTotals[label].total += amount;
     });
@@ -4918,7 +5131,8 @@ function confirmBudgetDel() {
 }
 function renderBudget() {
   const salary = parseNumInput(document.getElementById('budget-salary').value);
-  const total = _budgetCats.reduce((s, c) => s + (parseFloat(c.pct) || 0), 0);
+  // Redondeo para eliminar el error de coma flotante (30,9 + 33,3 + 35,8 = 99.99999999999999)
+  const total = Math.round(_budgetCats.reduce((s, c) => s + (parseFloat(c.pct) || 0), 0) * 1e6) / 1e6;
   const sumEl = document.getElementById('budget-sum');
   if (_budgetCats.length) {
     sumEl.textContent = `Suma: ${total}%${total === 100 ? ' ✓' : ' — debe ser 100%'}`;
@@ -4939,7 +5153,7 @@ function renderBudget() {
         onchange="_budgetCats[${i}].pct=parseFloat(this.value.replace(',','.'))||0;_budgetSave();renderBudget()" title="Editar %">
       <span class="budget-pct-sym">%</span>
       <span class="budget-amount" style="color:${c.color};">${salary ? fmtEur(amount) : '—'}</span>
-      <button class="budget-del-btn" onclick="budgetDelCat(${i})" title="Eliminar">×</button>
+      <button class="budget-del-btn" onclick="budgetDelCat(${i})" title="Eliminar" aria-label="Eliminar categoría">×</button>
     </div>`;
   }).join('');
 }
@@ -4962,6 +5176,9 @@ function budgetDragLeave(e) {
 }
 function budgetDragEnd(e) {
   document.querySelectorAll('.budget-row').forEach(r => r.classList.remove('budget-dragging','budget-drag-over'));
+  // Si el arrastre terminó sin reordenar (soltado sobre sí mismo o fuera de la lista), el
+  // índice quedaba guardado y un drop externo posterior (p. ej. un archivo) movía esa fila.
+  _budgetDragSrc = null;
 }
 function budgetDragDrop(e, i) {
   e.preventDefault();
@@ -4999,6 +5216,8 @@ function dragLeave(e) {
 }
 
 function dragEnd(e) {
+  dragSrcSection = null;
+  dragSrcIdx = null;
   document.querySelectorAll('.inv-row').forEach(r => {
     r.classList.remove('dragging', 'drag-over');
   });
@@ -5015,8 +5234,12 @@ async function dragDrop(e, section, targetIdx) {
   const rows = yearData[section].rows;
   const [moved] = rows.splice(dragSrcIdx, 1);
   rows.splice(targetIdx, 0, moved);
-  await saveYearData();
+  // Repintar antes del await: mientras se guarda, el DOM antiguo conservaría los
+  // índices previos al reordenado y una edición escribiría en otra fila.
+  dragSrcSection = null;
+  dragSrcIdx = null;
   renderInvTable();
+  await saveYearData();
 }
 
 // ── TOUCH DRAG & DROP (móvil) ─────────────────────────────────
@@ -5183,8 +5406,8 @@ async function dragDrop(e, section, targetIdx) {
       const rows = yearData[srcSection].rows;
       const [moved] = rows.splice(srcIdx, 1);
       rows.splice(parsed.idx, 0, moved);
+      renderInvTable(); // antes del await: el DOM antiguo tiene los índices previos al reordenado
       await saveYearData();
-      renderInvTable();
     } else if (parsedGroup && srcSection === 'gastos') {
       assignGastoGroup(srcIdx, parsedGroup.groupId);
     }
@@ -5299,7 +5522,7 @@ function renderTxnList() {
     return `<div class="pf-txn-item">
       <span class="pf-txn-item-date">${esc(dateLabel)}</span>
       <span class="pf-txn-item-info">${fmtEur(amount)} <span style="color:var(--text3);font-weight:400;">a ${fmtEur(price)}</span></span>
-      <button class="pf-txn-item-del" onclick="deleteTxn('${t.id}')" title="Eliminar operación">✕</button>
+      <button class="pf-txn-item-del" onclick="deleteTxn('${t.id}')" title="Eliminar operación" aria-label="Eliminar operación">✕</button>
     </div>`;
   }).join('');
 }
@@ -5440,9 +5663,13 @@ async function confirmDelete() {
     _pendingDeleteSection = null;
     _pendingDeleteRi = null;
     deletingId = null; // clear gasto state too to avoid stale deletingId after dialog reuse
-    await saveYearData();
+    // Repintar antes del await: mientras se guarda, el DOM antiguo conservaría los índices
+    // previos al borrado y una edición (p. ej. tras cerrar el diálogo con Esc) escribiría en otra fila.
     renderInvTable();
+    // Cerrar antes del await: si se cierra después, un diálogo de borrado abierto
+    // durante el guardado (tras Esc) se cerraría solo y perdería su fila pendiente.
     closeConfirm();
+    await saveYearData();
     return;
   }
   // Capture deletingId BEFORE closeConfirm() resets it to null
@@ -5463,11 +5690,19 @@ function closeConfirm() {
 
 async function addSectionRow(section) {
   yearData[section].rows.push({ id: 'r_' + Date.now(), label: 'Nueva fila' });
+  // La fila nueva de Gastos no tiene apartado: si "Sin apartado" está plegado no se
+  // renderizaría y no se podría enfocar, así que se despliega.
+  if (section === 'gastos' && (yearData.gastos.groups || []).length) ggSetCollapsed('__none__', false);
+  const addedYearData = yearData;
+  const newRi = yearData[section].rows.length - 1;
   await saveYearData();
   renderInvTable();
   setTimeout(() => {
-    const inputs = document.querySelectorAll('.inv-row-label input[type=text]');
-    if (inputs.length) { inputs[inputs.length - 1].select(); inputs[inputs.length - 1].focus(); }
+    if (yearData !== addedYearData) return; // cambió el año durante el guardado
+    // Seleccionar el input de la fila recién añadida (no el último input del documento,
+    // que puede pertenecer a otra sección o a una vista oculta)
+    const input = document.querySelector(`.inv-row-label input[onchange="renameRow('${section}',${newRi},this.value)"]`);
+    if (input) { input.select(); input.focus(); }
   }, 40);
 }
 
@@ -5492,7 +5727,19 @@ async function executeCopyFromPrevYear() {
   const section = _copyPendingSection;
   closeCopyConfirm();
   if (!section) return;
-  const prevYearData = await loadYearData(invYear - 1);
+  const copyYear = invYear;
+  const gen = _sessionGen;
+  let prevYearData;
+  try {
+    prevYearData = await loadYearData(copyYear - 1);
+  } catch(e) {
+    showLoadError();
+    return;
+  }
+  // Si el año visible cambió durante la carga, no copiar en el año equivocado.
+  // Tampoco si hubo logout (yearData === null) o se inició otra sesión: se copiarían
+  // filas del usuario anterior en el año del nuevo usuario.
+  if (gen !== _sessionGen || invYear !== copyYear || !yearData) return;
   const prevRows = prevYearData[section] && prevYearData[section].rows;
   if (!prevRows || prevRows.length === 0) {
     showCopyError();
@@ -5533,7 +5780,9 @@ function showCopyError() {
   toast.style.color = 'var(--text2)';
   toast.textContent = 'El año anterior no tiene filas';
   toast.classList.add('show');
-  _copyErrTimer = setTimeout(() => {
+  // toastTimer (no un temporizador propio): así showToast()/showSaveError() lo cancelan
+  // y este aviso no oculta antes de tiempo un toast posterior.
+  toastTimer = setTimeout(() => {
     toast.classList.remove('show');
     setTimeout(() => { toast.style.color = ''; toast.textContent = '✓ guardado'; }, 250);
   }, 3000);
@@ -5588,7 +5837,8 @@ function showSessionExpired() {
     toast.style.color = 'var(--red)';
     toast.textContent = '⚠ Sesión expirada — vuelve a iniciar sesión';
     toast.classList.add('show');
-    setTimeout(() => {
+    // toastTimer: que un toast posterior lo cancele y no se oculte antes de tiempo
+    toastTimer = setTimeout(() => {
       toast.classList.remove('show');
       setTimeout(() => {
         toast.style.color = '';
@@ -5598,21 +5848,26 @@ function showSessionExpired() {
   }
 }
 
+// Devuelve el valor guardado o null si la clave no existe.
+// Ante un error de red o HTTP lanza una excepción (no devuelve null), para que
+// un fallo de carga no se interprete como "sin datos" y se sobrescriba la nube.
 async function sbGet(key) {
-  try {
-    const res = await fetch(`${SB_URL}/rest/v1/app_storage?key=eq.${encodeURIComponent(key)}&select=value`, {
-      headers: sbHeaders(),
-      cache: 'no-store'
-    });
-    if (res.status === 401 || res.status === 403) { showSessionExpired(); return null; }
-    const data = await res.json();
-    return data && data.length > 0 ? data[0].value : null;
-  } catch(e) { return null; }
+  const res = await fetch(`${SB_URL}/rest/v1/app_storage?key=eq.${encodeURIComponent(key)}&select=value`, {
+    headers: sbHeaders(),
+    cache: 'no-store'
+  });
+  if (res.status === 401 || res.status === 403) { showSessionExpired(); throw new Error('sbGet: HTTP ' + res.status); }
+  if (!res.ok) throw new Error('sbGet: HTTP ' + res.status);
+  const data = await res.json();
+  return data && data.length > 0 ? data[0].value : null;
 }
 
 // Cola de sincronización silenciosa con Supabase
 let _sbSyncQueue = [];
 let _sbSyncRunning = false;
+// Último valor cuya escritura se ha iniciado para cada clave. La cola descarta las
+// entradas que ya no coinciden: un reintento antiguo no debe pisar un guardado más reciente.
+const _sbLatestVal = new Map();
 
 async function _sbSyncBackground(pairs) {
   for (const [k, v] of pairs) {
@@ -5622,11 +5877,13 @@ async function _sbSyncBackground(pairs) {
   }
   if (_sbSyncRunning) return;
   _sbSyncRunning = true;
+  const gen = _sessionGen;
   let failStreak = 0;
   while (_sbSyncQueue.length > 0 && failStreak < 5) {
-    const batch = [..._sbSyncQueue];
+    const batch = _sbSyncQueue.filter(([k, v]) => _sbLatestVal.get(k) === v);
     _sbSyncQueue = [];
     const results = await Promise.all(batch.map(([k, v]) => sbSet(k, v)));
+    if (gen !== _sessionGen) return; // logout durante la espera: no reintentar con otra sesión
     const failed = batch.filter((_, i) => !results[i]);
     if (failed.length > 0) {
       failStreak++;
@@ -5638,6 +5895,7 @@ async function _sbSyncBackground(pairs) {
       const dedupedFailed = failed.filter(([k]) => !queueKeys.has(k));
       _sbSyncQueue = [...dedupedFailed, ..._sbSyncQueue];
       await new Promise(r => setTimeout(r, Math.min(2000 * failStreak, 30000)));
+      if (gen !== _sessionGen) return;
     } else {
       failStreak = 0;
     }
@@ -5646,7 +5904,12 @@ async function _sbSyncBackground(pairs) {
   _sbSyncRunning = false;
 }
 
+// Escrituras a Supabase en curso (las lanzadas por persist(), saveYearDataSnapshot(),
+// el debounce de saveYearDataAndRender() y _ccSave() no pasan por _sbSyncQueue).
+let _sbWritesInFlight = 0;
 async function sbSet(key, value) {
+  _sbLatestVal.set(key, value);
+  _sbWritesInFlight++;
   try {
     const res = await fetch(`${SB_URL}/rest/v1/app_storage?on_conflict=key`, {
       method: 'POST',
@@ -5656,6 +5919,7 @@ async function sbSet(key, value) {
     if (res.status === 401 || res.status === 403) { showSessionExpired(); return false; }
     return res.ok;
   } catch(e) { return false; }
+  finally { _sbWritesInFlight--; }
 }
 
 async function syncToCloud() { /* no-op: saves go direct to Supabase via persist() */ }
@@ -5663,14 +5927,19 @@ async function syncFromCloud() { return false; /* no-op */ }
 
 function _lsGet(_key) { return null; } // datos solo en Supabase
 
-async function loadStateFromCloud() {
-  let rawData, rawPm, rawCats, rawNextId, rawCompound;
-  try {
-    [rawData, rawPm, rawCats, rawNextId, rawCompound] = await Promise.all([
-      sbGet(K.data), sbGet(K.pm), sbGet(K.cats), sbGet(K.nextId),
-      sbGet(K.compound || 'gr_compound'),
-    ]);
-  } catch(e) {}
+async function loadStateFromCloud(isStale) {
+  // Si alguna lectura falla, la excepción se propaga ANTES de modificar el estado
+  // en memoria (no se sustituyen los datos por los valores por defecto).
+  const gen = _sessionGen;
+  const [rawData, rawPm, rawCats, rawNextId, rawCompound] = await Promise.all([
+    sbGet(K.data), sbGet(K.pm), sbGet(K.cats), sbGet(K.nextId),
+    sbGet(K.compound || 'gr_compound'),
+  ]);
+  const yearToLoad = invYear;
+  const loadedYear = await loadYearData(yearToLoad);
+  // Si la sesión cambió durante la carga (logout / otro usuario) o el llamador indica
+  // que el resultado ya no es válido, no tocar el estado en memoria.
+  if (gen !== _sessionGen || (isStale && isStale())) throw new Error('loadStateFromCloud: resultado obsoleto');
   try {
     data   = rawData   ? JSON.parse(rawData)   : JSON.parse(JSON.stringify(DEF_DATA));
     pm     = rawPm     ? JSON.parse(rawPm)     : JSON.parse(JSON.stringify(DEF_PM));
@@ -5682,6 +5951,13 @@ async function loadStateFromCloud() {
     cats   = JSON.parse(JSON.stringify(DEF_CATS));
     nextId = 1;
   }
+  // persist() escribe data y nextId en peticiones independientes: si solo se guardó data,
+  // nextId queda atrasado y el siguiente gasto repetiría un id existente.
+  const maxId = Array.isArray(data) ? data.reduce((m, d) => Math.max(m, Number(d && d.id) || 0), 0) : 0;
+  if (nextId <= maxId) nextId = maxId + 1;
+  // Si la categoría filtrada ya no existe en los datos recargados (renombrada o borrada
+  // en otro dispositivo), volver a "Todos" igual que hace saveCats().
+  if (filterCat !== 'all' && !(Array.isArray(cats) && cats.some(c => c.label === filterCat))) filterCat = 'all';
   // Pre-load compound calc state from cloud so the calculadora opens instantly
   try {
     if (rawCompound) {
@@ -5692,7 +5968,9 @@ async function loadStateFromCloud() {
   // Mark the compound container as pre-loaded so renderCompoundCalc skips a redundant fetch
   const ccCont = document.getElementById('inv-compound-calc');
   if (ccCont) ccCont.dataset.ccLoaded = '1';
-  await initYearData();
+  // Si durante la carga changeInvYear() ya cambió de año, yearData pertenece a ese año:
+  // no sustituirlo por los datos del año anterior.
+  if (invYear === yearToLoad) yearData = loadedYear;
   // Theme stays in localStorage (it's a per-browser visual preference, not data)
   const themeKey = K.theme || 'theme';
   const theme = localStorage.getItem(themeKey);
@@ -5714,10 +5992,31 @@ async function initSync() {
   syncIndicator.textContent = '↕ cargando...';
   document.body.appendChild(syncIndicator);
 
-  await loadStateFromCloud();
+  const gen = _sessionGen;
+  // Reintentar hasta cargar con éxito: mientras tanto _stateLoaded es false y no se escribe en la nube
+  while (true) {
+    try {
+      await loadStateFromCloud();
+      break;
+    } catch(e) {
+      if (gen !== _sessionGen || !currentUser) { syncIndicator.remove(); return; }
+      syncIndicator.textContent = '↕ sin conexión, reintentando...';
+      await new Promise(r => setTimeout(r, 3000));
+      if (gen !== _sessionGen || !currentUser) { syncIndicator.remove(); return; }
+    }
+  }
   syncIndicator.remove();
+  if (gen !== _sessionGen) return;
+  _stateLoaded = true;
 
   render();
+  // Si el usuario abrió Gastos recurrentes / Inversiones durante la carga, esa vista
+  // se pintó con un año vacío por defecto: repintarla con los datos cargados.
+  if (document.getElementById('view-gastos').style.display === 'none') renderInvTable();
+  // loadStateFromCloud() sustituye _ccState; si la calculadora ya se pintó durante la carga,
+  // sus inputs y resultados mostrarían los valores anteriores (igual que en visibilitychange).
+  const ccElInit = document.getElementById('inv-compound-calc');
+  if (ccElInit && ccElInit.dataset.initialized === '1') { delete ccElInit.dataset.initialized; renderCompoundCalc(); }
   document.getElementById('last-updated').textContent =
     'Guardado automáticamente · ' + new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
 }
@@ -5744,7 +6043,7 @@ function openInvPlus(section, ri) {
   document.getElementById('inv-plus-step1-label').textContent = sectionLabel[section] || '¿A qué mes quieres añadirlo?';
   // Build month grid
   const grid = document.getElementById('inv-plus-month-grid');
-  const _curMonth = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'][new Date().getMonth()];
+  const _curMonth = invYear === new Date().getFullYear() ? ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'][new Date().getMonth()] : null;
   grid.innerHTML = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'].map(m => {
     const val = row && row[m] ? parseFloat(row[m]) : 0;
     const haVal = val !== 0;
@@ -5778,7 +6077,7 @@ function updateInvPlusPreview() {
   const amtStr = document.getElementById('inv-plus-amount').value;
   const add = parseNumInput(amtStr);
   const preview = document.getElementById('inv-plus-preview');
-  if (!add) { preview.style.display = 'none'; return; }
+  if (!add || add <= 0) { preview.style.display = 'none'; return; } // confirmInvPlus() rechaza importes <= 0
   const newVal = Math.round((current + add) * 100) / 100;
   const rowLabel = row ? row.label : '';
   const sectionNoun = {ingresos:'ingreso',gastos:'gasto',inversiones:'inversión'}[_ipSection] || 'importe';
@@ -5801,9 +6100,11 @@ async function confirmInvPlus() {
   const current = parseFloat(row[_ipMonth]) || 0;
   const newVal = Math.round((current + add) * 100) / 100;
   if (newVal !== 0) row[_ipMonth] = newVal; else delete row[_ipMonth];
+  // Cerrar (y limpiar _ipSection/_ipRi/_ipMonth) antes del await para que un
+  // segundo Enter/clic durante el guardado no vuelva a sumar el importe.
+  closeInvPlus();
   await saveYearData();
   renderInvTable();
-  closeInvPlus();
 }
 
 function closeInvPlus() {
@@ -5813,22 +6114,55 @@ function closeInvPlus() {
 
 // Recargar datos desde la nube al volver a la app (otro dispositivo, otra pestaña)
 let _lastSyncTs = 0;
+function _editModalOpen() {
+  return !!document.querySelector('.modal-overlay.open, .confirm-overlay.open, #inv-plus-modal.open, #pf-txn-modal.open');
+}
 document.addEventListener('visibilitychange', async () => {
   if (document.visibilityState === 'hidden' && currentUser) {
     // Flush saves pendientes antes de salir
     if (_sbSyncQueue.length > 0 && !_sbSyncRunning) _sbSyncBackground(_sbSyncQueue.splice(0));
+    // También el guardado con debounce de la tabla anual (saveYearDataAndRender)
+    if (_saveYearTimer) saveYearData();
     return;
   }
   if (document.visibilityState === 'visible' && currentUser && currentUser.access_token) {
     const now = Date.now();
+    // No recargar desde la nube mientras haya escrituras pendientes de subir:
+    // se sustituiría el estado en memoria por la versión antigua del servidor.
+    if (_sbSyncQueue.length > 0 || _sbSyncRunning || _sbWritesInFlight > 0) return;
+    // Ni con un guardado con debounce pendiente (se perdería esa edición en memoria)
+    // ni antes de la carga inicial (initSync sigue en curso).
+    if (_saveYearTimer || !_stateLoaded) return;
+    // Ni con un cambio de año en curso: al terminar, changeInvYear() cambiaría invYear y
+    // yearData sin incrementar _invYearLoadSeq, y la recarga restauraría invYear = prevYear
+    // dejando yearData de otro año (las ediciones se guardarían en el año equivocado).
+    if (_invYearTarget !== null) return;
+    // Ni con un modal de edición/confirmación abierto: guardan índices de fila
+    // (_pendingDeleteRi, _txnRi, _ipRi...) que apuntarían a otra fila tras recargar.
+    if (_editModalOpen()) return;
     if (now - _lastSyncTs > 30000) {
       _lastSyncTs = Date.now(); // Actualizar antes del await para evitar cargas concurrentes
       // Guardar el año que el usuario tenía antes de recargar
       const prevYear = invYear;
-      await loadStateFromCloud();
-      // Recargar siempre los datos del año que el usuario estaba viendo
-      invYear = prevYear;
-      yearData = await loadYearData(prevYear);
+      const gen = _sessionGen;
+      const editSeq = _localEditSeq;
+      const yearSeq = _invYearLoadSeq;
+      // Obsoleto si durante la recarga hubo logout, una edición/guardado o un cambio de año
+      const isStale = () => gen !== _sessionGen || editSeq !== _localEditSeq || yearSeq !== _invYearLoadSeq || _saveYearTimer !== null || _editModalOpen();
+      try {
+        await loadStateFromCloud(isStale);
+        // loadStateFromCloud() sustituye _ccState, pero la calculadora ya inicializada
+        // no se repinta sola: sus inputs mostrarían los valores antiguos.
+        const ccEl = document.getElementById('inv-compound-calc');
+        if (ccEl && ccEl.dataset.initialized === '1') { delete ccEl.dataset.initialized; renderCompoundCalc(); }
+        // Recargar siempre los datos del año que el usuario estaba viendo
+        invYear = prevYear;
+        const reloadedYear = await loadYearData(prevYear);
+        if (!isStale()) yearData = reloadedYear;
+      } catch(e) {
+        // Sin conexión o recarga obsoleta: se conserva el estado en memoria (no se vacía)
+      }
+      if (gen !== _sessionGen) return; // logout durante la recarga: no pintar nada
       render();
       renderInvTable();
     }
